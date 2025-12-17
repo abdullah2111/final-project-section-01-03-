@@ -55,7 +55,7 @@ class ListUserReviewsUser {
     return json;
   }
 
-  ListUserReviewsUser({
+  const ListUserReviewsUser({
     required this.id,
     required this.username,
     required this.reviews,
@@ -107,7 +107,7 @@ class ListUserReviewsUserReviews {
     return json;
   }
 
-  ListUserReviewsUserReviews({
+  const ListUserReviewsUserReviews({
     this.rating,
     required this.reviewDate,
     this.reviewText,
@@ -148,7 +148,7 @@ class ListUserReviewsUserReviewsMovie {
     return json;
   }
 
-  ListUserReviewsUserReviewsMovie({
+  const ListUserReviewsUserReviewsMovie({
     required this.id,
     required this.title,
   });
@@ -185,7 +185,7 @@ class ListUserReviewsData {
     return json;
   }
 
-  ListUserReviewsData({
+  const ListUserReviewsData({
     this.user,
   });
 }

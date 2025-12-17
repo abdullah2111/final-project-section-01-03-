@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MatchHistoryScreen extends StatelessWidget {
-  const MatchHistoryScreen({Key? key}) : super(key: key);
+  const MatchHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:demo/models/game_models.dart';
 import 'package:demo/services/game_service.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class ScoreProvider extends ChangeNotifier {
   int _player1Wins = 0;
@@ -37,6 +38,7 @@ class ScoreProvider extends ChangeNotifier {
 class HistoryProvider extends ChangeNotifier {
   final GameService _gameService = GameService();
   List<Match> _matches = [];
+  StreamSubscription<List<Match>>? _matchesSubscription;
 
   List<Match> get matches => _matches;
 
@@ -45,9 +47,19 @@ class HistoryProvider extends ChangeNotifier {
   }
 
   void loadMatches() {
-    _gameService.getMatchHistory().listen((matches) {
+    // Cancel previous subscription to prevent memory leaks
+    _matchesSubscription?.cancel();
+    
+    _matchesSubscription = _gameService.getMatchHistory().listen((matches) {
       _matches = matches;
       notifyListeners();
     });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the stream subscription when provider is disposed
+    _matchesSubscription?.cancel();
+    super.dispose();
   }
 }
