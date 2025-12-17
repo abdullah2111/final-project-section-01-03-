@@ -62,3 +62,38 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
         _player2Wins++;
       }
     }
+ _saveMatch();
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _resetGame();
+            },
+            child: const Text('Play Again'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _switchPlayers();
+              _resetGame();
+            },
+            child: const Text('Switch Players'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _goToHistory();
+            },
+            child: const Text('View History'),
+          ),
+        ],
+      ),
+    );
+  }
