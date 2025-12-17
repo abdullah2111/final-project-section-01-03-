@@ -23,3 +23,10 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
   int _ties = 0;
   final GameService _gameService = GameService();
   bool _isSaving = false;
+@override
+  void initState() {
+    super.initState();
+    _currentPlayerX = widget.player1;
+    _currentPlayerO = widget.player2;
+    _gameState = GameState();
+  }
