@@ -1,4 +1,6 @@
 import 'package:demo/models/game_models.dart';
+import 'package:demo/providers/game_provider.dart';
+import 'package:demo/providers/history_provider.dart';
 import 'package:demo/providers/player_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +30,8 @@ class _PlayerEntryScreenState extends State<PlayerEntryScreen> {
       final player2 = Player(name: _player2Controller.text.trim(), symbol: 'O');
 
       context.read<PlayerProvider>().setPlayers(player1, player2);
+      context.read<GameProvider>().resetGame();
+      context.read<ScoreProvider>().resetScores();
 
       Navigator.of(context).pushNamed('/game');
     }
