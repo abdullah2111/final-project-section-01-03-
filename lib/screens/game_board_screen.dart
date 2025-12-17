@@ -121,3 +121,17 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
       setState(() => _isSaving = false);
     }
   }
+void _resetGame() {
+    setState(() {
+      _gameState.reset();
+    });
+  }
+
+  void _switchPlayers() {
+    setState(() {
+      final temp = _currentPlayerX;
+      _currentPlayerX = _currentPlayerO;
+      _currentPlayerO = temp;
+      _gameState.reset();
+    });
+  }
