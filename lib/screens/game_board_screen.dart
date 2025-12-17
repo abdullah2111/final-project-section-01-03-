@@ -41,3 +41,24 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
       }
     }
   }
+  void _showGameOverDialog() {
+    String title;
+    String message;
+
+    if (_gameState.winner == 'tie') {
+      title = "It's a Tie!";
+      message = 'Both players played well!';
+      _ties++;
+    } else {
+      final winner = _gameState.winner == 'X'
+          ? _currentPlayerX
+          : _currentPlayerO;
+      title = '${winner.name} Wins!';
+      message = 'Congratulations!';
+
+      if (_gameState.winner == 'X') {
+        _player1Wins++;
+      } else {
+        _player2Wins++;
+      }
+    }
