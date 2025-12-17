@@ -1,4 +1,5 @@
 import 'package:demo/models/game_models.dart';
+import 'package:demo/providers/auth_provider.dart';
 import 'package:demo/providers/game_provider.dart';
 import 'package:demo/providers/history_provider.dart';
 import 'package:demo/providers/player_provider.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class GameBoardScreen extends StatefulWidget {
-  const GameBoardScreen({Key? key}) : super(key: key);
+  const GameBoardScreen({super.key});
 
   @override
   State<GameBoardScreen> createState() => _GameBoardScreenState();
@@ -101,6 +102,7 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
     try {
       final gameProvider = context.read<GameProvider>();
       final playerProvider = context.read<PlayerProvider>();
+      final authProvider = context.read<AuthProvider>();
       final gameState = gameProvider.gameState;
 
       final match = Match(
@@ -111,6 +113,7 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
         date: DateTime.now(),
         player1Symbol: 'X',
         player2Symbol: 'O',
+        userEmail: authProvider.user?.email,
       );
       await _gameService.saveMatch(match);
     } catch (e) {

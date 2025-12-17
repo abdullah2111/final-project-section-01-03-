@@ -1,4 +1,5 @@
 import 'package:demo/models/game_models.dart';
+import 'package:demo/providers/auth_provider.dart';
 import 'package:demo/providers/game_provider.dart';
 import 'package:demo/providers/history_provider.dart';
 import 'package:demo/providers/player_provider.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PlayerEntryScreen extends StatefulWidget {
-  const PlayerEntryScreen({Key? key}) : super(key: key);
+  const PlayerEntryScreen({super.key});
 
   @override
   State<PlayerEntryScreen> createState() => _PlayerEntryScreenState();
@@ -44,6 +45,16 @@ class _PlayerEntryScreenState extends State<PlayerEntryScreen> {
         title: const Text('Tic Tac Toe'),
         centerTitle: true,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthProvider>().logout();
+              Navigator.of(context).pushReplacementNamed('/login');
+            },
+            tooltip: 'Logout',
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

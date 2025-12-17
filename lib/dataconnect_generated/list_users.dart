@@ -49,7 +49,7 @@ class ListUsersUsers {
     return json;
   }
 
-  ListUsersUsers({
+  const ListUsersUsers({
     required this.id,
     required this.username,
   });
@@ -86,7 +86,7 @@ class ListUsersData {
     return json;
   }
 
-  ListUsersData({
+  const ListUsersData({
     required this.users,
   });
 }

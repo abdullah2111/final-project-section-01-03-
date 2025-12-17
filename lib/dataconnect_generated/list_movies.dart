@@ -59,7 +59,7 @@ class ListMoviesMovies {
     return json;
   }
 
-  ListMoviesMovies({
+  const ListMoviesMovies({
     required this.id,
     required this.title,
     required this.imageUrl,
@@ -98,7 +98,7 @@ class ListMoviesData {
     return json;
   }
 
-  ListMoviesData({
+  const ListMoviesData({
     required this.movies,
   });
 }
