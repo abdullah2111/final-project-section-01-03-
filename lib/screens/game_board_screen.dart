@@ -30,3 +30,14 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
     _currentPlayerO = widget.player2;
     _gameState = GameState();
   }
+  void _onCellTapped(int index) {
+    if (!_gameState.gameOver && _gameState.board[index].isEmpty) {
+      setState(() {
+        _gameState.makeMove(index);
+      });
+
+      if (_gameState.gameOver) {
+        _showGameOverDialog();
+      }
+    }
+  }
